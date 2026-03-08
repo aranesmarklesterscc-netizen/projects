@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - AUTSHS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="admin-dashboard">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-shield-alt"></i> Admin Panel</h2>
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+
+            <nav class="admin-nav">
+                <ul>
+                    <li><a href="#dashboard" class="nav-link active" data-section="dashboard">
+                        <i class="fas fa-chart-line"></i> <span>Dashboard</span>
+                    </a></li>
+                    <li><a href="#pages" class="nav-link" data-section="pages">
+                        <i class="fas fa-file-alt"></i> <span>Manage Pages</span>
+                    </a></li>
+                    <li><a href="#settings" class="nav-link" data-section="settings">
+                        <i class="fas fa-cog"></i> <span>Website Settings</span>
+                    </a></li>
+                    <li><a href="#content" class="nav-link" data-section="content">
+                        <i class="fas fa-edit"></i> <span>Edit Content</span>
+                    </a></li>
+                    <li><a href="#users" class="nav-link" data-section="users">
+                        <i class="fas fa-users"></i> <span>Users</span>
+                    </a></li>
+                    <li><a href="#maintenance" class="nav-link" data-section="maintenance">
+                        <i class="fas fa-tools"></i> <span>Maintenance</span>
+                    </a></li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button id="logoutBtn" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> <span>Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-content">
+            <!-- Top Bar -->
+            <div class="admin-topbar">
+                <div class="topbar-left">
+                    <h1 id="pageTitle">Dashboard</h1>
+                </div>
+                <div class="topbar-right">
+                    <div class="admin-profile">
+                        <span id="adminUsername">Admin User</span>
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Sections -->
+            <div class="content-area">
+                <!-- Dashboard Section -->
+                <section id="dashboard" class="content-section active">
+                    <div class="dashboard-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>Total Pages</h3>
+                                <p class="stat-number">5</p>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-images"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>Images</h3>
+                                <p class="stat-number">12</p>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-link"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>Active Links</h3>
+                                <p class="stat-number">8</p>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-calendar"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>Last Updated</h3>
+                                <p class="stat-date" id="lastUpdated">Today</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recent-activity">
+                        <h2>Recent Activity</h2>
+                        <table class="activity-table">
+                            <thead>
+                                <tr>
+                                    <th>Action</th>
+                                    <th>Page</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Updated</td>
+                                    <td>index.html</td>
+                                    <td>Today</td>
+                                    <td><span class="status-badge success">Published</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Created</td>
+                                    <td>about.html</td>
+                                    <td>Yesterday</td>
+                                    <td><span class="status-badge success">Published</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Manage Pages Section -->
+                <section id="pages" class="content-section">
+                    <div class="section-header">
+                        <h2>Manage Pages</h2>
+                        <button class="btn btn-primary" id="addPageBtn">
+                            <i class="fas fa-plus"></i> Add Page
+                        </button>
+                    </div>
+
+                    <table class="pages-table">
+                        <thead>
+                            <tr>
+                                <th>Page Name</th>
+                                <th>File</th>
+                                <th>Status</th>
+                                <th>Last Modified</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Home</td>
+                                <td>index.html</td>
+                                <td><span class="status-badge success">Published</span></td>
+                                <td>2026-03-08</td>
+                                <td>
+                                    <button class="btn btn-sm btn-edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-delete"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>About Us</td>
+                                <td>about.html</td>
+                                <td><span class="status-badge success">Published</span></td>
+                                <td>2026-03-08</td>
+                                <td>
+                                    <button class="btn btn-sm btn-edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-delete"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Academics</td>
+                                <td>academics.html</td>
+                                <td><span class="status-badge success">Published</span></td>
+                                <td>2026-03-07</td>
+                                <td>
+                                    <button class="btn btn-sm btn-edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-delete"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- Settings Section -->
+                <section id="settings" class="content-section">
+                    <div class="section-header">
+                        <h2>Website Settings</h2>
+                    </div>
+
+                    <div class="settings-form">
+                        <div class="form-group">
+                            <label>School Name</label>
+                            <input type="text" value="Antonio Uy Tan Senior High School">
+                        </div>
+
+                        <div class="form-group">
+                            <label>School Email</label>
+                            <input type="email" value="admin@autshs.edu.ph">
+                        </div>
+
+                        <div class="form-group">
+                            <label>School Phone</label>
+                            <input type="tel" value="+63 (02) 123-4567">
+                        </div>
+
+                        <div class="form-group">
+                            <label>School Address</label>
+                            <textarea rows="3">123 Academic St., City, Philippines</textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Theme Color</label>
+                            <input type="color" value="#3498db">
+                        </div>
+
+                        <button class="btn btn-primary">
+                            <i class="fas fa-save"></i> Save Settings
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Content Section -->
+                <section id="content" class="content-section">
+                    <div class="section-header">
+                        <h2>Edit Website Content</h2>
+                    </div>
+
+                    <div class="content-tabs">
+                        <button class="content-tab-btn active" data-tab="home-content">Home Page</button>
+                        <button class="content-tab-btn" data-tab="school-info">School Info</button>
+                        <button class="content-tab-btn" data-tab="cards-content">Cards Content</button>
+                        <button class="content-tab-btn" data-tab="social-links">Social Links</button>
+                    </div>
+
+                    <!-- Home Page Content Tab -->
+                    <div class="content-tab active" id="home-content">
+                        <div class="editor-form">
+                            <div class="form-group">
+                                <label>Home Page Title</label>
+                                <input type="text" class="edit-field" data-field="homeTitle" placeholder="Enter home page title">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Home Page Description</label>
+                                <textarea class="edit-field" data-field="homeDesc" rows="6" placeholder="Enter home page description..."></textarea>
+                            </div>
+
+                            <button class="btn btn-primary save-content-btn" data-section="home">
+                                <i class="fas fa-save"></i> Save Home Content
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- School Info Tab -->
+                    <div class="content-tab" id="school-info">
+                        <div class="editor-form">
+                            <div class="form-group">
+                                <label>School Name</label>
+                                <input type="text" class="edit-field" data-field="schoolName" placeholder="School Name">
+                            </div>
+
+                            <div class="form-group">
+                                <label>School Email</label>
+                                <input type="email" class="edit-field" data-field="schoolEmail" placeholder="School Email">
+                            </div>
+
+                            <div class="form-group">
+                                <label>School Phone</label>
+                                <input type="tel" class="edit-field" data-field="schoolPhone" placeholder="School Phone">
+                            </div>
+
+                            <div class="form-group">
+                                <label>School Address</label>
+                                <textarea class="edit-field" data-field="schoolAddress" rows="4" placeholder="School Address..."></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Academic Year</label>
+                                <input type="text" class="edit-field" data-field="academicYear" placeholder="e.g., SY 2025-2026">
+                            </div>
+
+                            <button class="btn btn-primary save-content-btn" data-section="school">
+                                <i class="fas fa-save"></i> Save School Information
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Cards Content Tab -->
+                    <div class="content-tab" id="cards-content">
+                        <div class="editor-form">
+                            <h3>Card 1: Academics</h3>
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input type="text" class="edit-field" data-field="card1Title" placeholder="Card 1 Title">
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea class="edit-field" data-field="card1Desc" rows="3" placeholder="Card 1 Description..."></textarea>
+                            </div>
+
+                            <hr style="border: 1px solid #262d3a; margin: 25px 0;">
+
+                            <h3>Card 2: Admissions</h3>
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input type="text" class="edit-field" data-field="card2Title" placeholder="Card 2 Title">
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea class="edit-field" data-field="card2Desc" rows="3" placeholder="Card 2 Description..."></textarea>
+                            </div>
+
+                            <hr style="border: 1px solid #262d3a; margin: 25px 0;">
+
+                            <h3>Card 3: Resources</h3>
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input type="text" class="edit-field" data-field="card3Title" placeholder="Card 3 Title">
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea class="edit-field" data-field="card3Desc" rows="3" placeholder="Card 3 Description..."></textarea>
+                            </div>
+
+                            <hr style="border: 1px solid #262d3a; margin: 25px 0;">
+
+                            <h3>Card 4: About Us</h3>
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input type="text" class="edit-field" data-field="card4Title" placeholder="Card 4 Title">
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea class="edit-field" data-field="card4Desc" rows="3" placeholder="Card 4 Description..."></textarea>
+                            </div>
+
+                            <button class="btn btn-primary save-content-btn" data-section="cards">
+                                <i class="fas fa-save"></i> Save Cards Content
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Social Links Tab -->
+                    <div class="content-tab" id="social-links">
+                        <div class="editor-form">
+                            <div class="form-group">
+                                <label>Facebook Page URL</label>
+                                <input type="url" class="edit-field" data-field="facebookUrl" placeholder="https://facebook.com/...">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Email Address (Footer)</label>
+                                <input type="email" class="edit-field" data-field="footerEmail" placeholder="email@example.com">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Phone Number (Footer)</label>
+                                <input type="tel" class="edit-field" data-field="footerPhone" placeholder="+63 (02) 123-4567">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Location/Address (Footer)</label>
+                                <textarea class="edit-field" data-field="footerAddress" rows="3" placeholder="Address..."></textarea>
+                            </div>
+
+                            <button class="btn btn-primary save-content-btn" data-section="social">
+                                <i class="fas fa-save"></i> Save Social Links
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="contentMessage" class="content-message"></div>
+                </section>
+
+                <!-- Users Section -->
+                <section id="users" class="content-section">
+                    <div class="section-header">
+                        <h2>User Management</h2>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-user-plus"></i> Add Admin
+                        </button>
+                    </div>
+
+                    <table class="users-table">
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>admin</td>
+                                <td>admin@autshs.edu.ph</td>
+                                <td>Superuser</td>
+                                <td><span class="status-badge success">Active</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-edit"><i class="fas fa-edit"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- Maintenance Section -->
+                <section id="maintenance" class="content-section">
+                    <div class="section-header">
+                        <h2>Maintenance & Tools</h2>
+                    </div>
+
+                    <div class="maintenance-grid">
+                        <div class="maintenance-card">
+                            <h3><i class="fas fa-database"></i> Backup</h3>
+                            <p>Create a backup of all website data</p>
+                            <button class="btn btn-primary">Create Backup</button>
+                        </div>
+
+                        <div class="maintenance-card">
+                            <h3><i class="fas fa-sync"></i> Clear Cache</h3>
+                            <p>Clear browser and server cache</p>
+                            <button class="btn btn-primary">Clear Cache</button>
+                        </div>
+
+                        <div class="maintenance-card">
+                            <h3><i class="fas fa-check-circle"></i> System Check</h3>
+                            <p>Run system health check</p>
+                            <button class="btn btn-primary">Run Check</button>
+                        </div>
+
+                        <div class="maintenance-card">
+                            <h3><i class="fas fa-file-csv"></i> Export Data</h3>
+                            <p>Export website data as CSV</p>
+                            <button class="btn btn-primary">Export</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
